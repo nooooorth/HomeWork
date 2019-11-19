@@ -1,4 +1,6 @@
 # HomeWork
 ## 软件工程作业  
-1：英文字频统计(word_frequency.c)  
-test
+1：英文字频统计  
+  a 输入文件路径；  
+  b 输出统计结果到文件（out.txt）,包括出现的单词和频率；  
+  c 输出处理时间到文件（out.txt）;  
