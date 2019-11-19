@@ -8,7 +8,7 @@
 struct fre_word
 {
 	int num;
-	char a[18];
+	char a[18];         //单词最长为18个字符
 };
 /*****************快速排序************/
 void quick(struct fre_word *f, int i, int j)
@@ -40,14 +40,13 @@ void quick(struct fre_word *f, int i, int j)
 /******************主函数****************/
 int main(int argc, char *argv[])
 {
-
-	struct _finddata_t fa;
-	long fHandle;
-	FILE *fp;
-	void quick(struct fre_word *f, int i, int j);
+    /***********声明和定义*******************/
+    void quick(struct fre_word *f, int i, int j);               //函数声明
+	FILE *fp,*fp_1;     //文件指针
 	int i, j = 0, m, n, flag, p = 1;
-	int mode,count=0;                                                         //mode为不同功能,为1时输入单个文件
 	char filename[20], b[18], ch;
+	clock_t start,finish;
+    double time;
 	struct fre_word *w;
 	w = (struct fre_word *)malloc(50000 * p * sizeof(struct fre_word));//给结构体分配初始内存，50000可打开650kb左右的文件
     /****************读取文本文件****************************/
@@ -59,15 +58,12 @@ int main(int argc, char *argv[])
         exit(0);
     }
     // 开始时间
-    clock_t start,finish;
-    double time;
     start=clock();
     /****************将单词出现次数设置为1****************************/
     for (i = 0; i < 500; i++)
     {
         (w + i)->num = 1;
     }
-
     /****************单词匹配****************************************/
     i = 0;
     while (!feof(fp))//文件尚未读取完毕
@@ -106,7 +102,6 @@ int main(int argc, char *argv[])
     i = i - 2;
     quick(w, 0, i);
     //输出
-    FILE *fp_1;
     fp_1=fopen("out.txt","w");
     printf("不重复的单词数：%d\n",i);
     fprintf(fp_1,"不重复的单词数：%d\n",i);
